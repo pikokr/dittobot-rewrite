@@ -1,2 +1,2 @@
-export { Command } from './Command'
-export { Ops } from './Ops'
+export { CommandType } from './CommandType'
+export { OpsType } from './OpsType'

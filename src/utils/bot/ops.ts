@@ -1,6 +1,6 @@
 import { GuildMember, Message } from 'discord.js'
 
-export default {
+const ops = {
     ownerID: <string>process.env.OWNER_ID,
     prefix: '디토 ',
     formatTime(date: Date = new Date()): string {
@@ -14,5 +14,14 @@ export default {
         if (!member) member = message.member
 
         return <GuildMember>member
+    },
+    uuidv4(): string {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+            const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8)
+
+            return v.toString(16)
+        })
     }
 }
+
+export default ops

@@ -28,6 +28,7 @@ module.exports = {
 			'error',
 			'never'
 		],
-		'@typescript-eslint/no-var-requires': 0
+		'@typescript-eslint/no-var-requires': 0,
+		'@typescript-eslint/no-explicit-any': 0
 	}
 }
