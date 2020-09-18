@@ -11,15 +11,6 @@ export default {
 
         const input = args.join(' '), filter = (reaction: MessageReaction, user: User) => (reaction.emoji.name === '🗑️') && user.id === ownerID
 
-        /*message.author.send(`${client.user?.username}의 authKey를 입력해 주세요.`)
-
-        const collector = message.author.dmChannel?.createMessageCollector((msg: Message) => msg.content === '헐', { time: 20000 })
-
-        collector?.on('collect', (msg: Message): boolean => isVerified = msg.content === authKey)
-        collector?.on('end', (collected: Collection<string, Message>): void | Promise<Message> => {
-            if (!collected.size) message.channel.send('시간이 지났습니다.')
-        })*/
-
         let type: string | (() => void)
 
         new Promise(resolve => resolve(eval(input))).then((res: any): void => {
