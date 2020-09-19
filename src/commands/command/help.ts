@@ -1,9 +1,10 @@
-import { Client, Message, MessageEmbed } from 'discord.js'
+import { Bot } from '../../utils'
 
 export default {
     name: 'help',
     aliases: ['도움'],
-    run(client: Client, message: Message): void {
-        message.channel.send(new MessageEmbed().setTitle('도움말'))
+    category: 'command',
+    run(client: Bot): void {
+        console.log(client.commands.map((command: any) => command.category))
     }
 }

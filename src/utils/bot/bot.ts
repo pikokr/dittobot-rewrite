@@ -30,9 +30,9 @@ export default class extends Client {
                 const activities: Array<string> = [`${this.guilds.cache.size}개의 서버`, `${this.users.cache.filter((user: User) => !user.bot).size}명의 유저`, `${this.guilds.cache.size} guilds`, `${this.users.cache.filter((user: User) => !user.bot).size} users`]
 
                 this.user?.setActivity(activities[Math.floor(Math.random() * activities.length)])
-            }, 1000)
+            }, 10000)
 
-            web.start()
+            web.start(5000)
         })
 
         this.on('message', async (message: Message) => {

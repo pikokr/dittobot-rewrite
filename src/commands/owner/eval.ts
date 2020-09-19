@@ -9,11 +9,13 @@ export default {
     run(client: Client, message: Message, args: Array<string>, { ownerID }: OpsType): void | Promise<Message> {
         if (!args.join(' ')) return
 
-        const input = args.join(' '), filter = (reaction: MessageReaction, user: User) => (reaction.emoji.name === '🗑️') && user.id === ownerID
+        const input = args.join(' ').replace(/^```(js|javascript|jsx|ts|typescript)?\s/, '').replace(/\s?```$/, '')
+        const filter = (reaction: MessageReaction, user: User) => (reaction.emoji.name === '🗑️') && user.id === ownerID
+        const embed = new MessageEmbed().setTitle('Eval').setColor(0x00ff00)
 
         let type: string | (() => void)
 
-        new Promise(resolve => resolve(eval(input))).then((res: any): void => {
+        new Promise(resolve => resolve(eval(input))).then(async (res: any): Promise<void> => {
             let output: string = type = res
 
             if (typeof output !== 'string') output = inspect(output, { depth: 0 })
@@ -23,25 +25,27 @@ export default {
             if (output.length > 1500) output = `${output.substr(0, 1450)}...`
             if (!output) output = '결과 없음'
 
-            message.channel.send(new MessageEmbed().setTitle('Eval').setColor(0x00ff00).setDescription(`**📥 Input**\n\`\`\`js\n${args.join(' ')}\n\`\`\`\n**📤 Output**\n\`\`\`js\n${output}\n\`\`\``)).then(async msg => {
-                await msg.react('🗑️')
+            const msg = await message.channel.send(embed.setDescription(`**📥 Input**\n\`\`\`js\n${input}\n\`\`\`\n**📤 Output**\n\`\`\`js\n${output}\n\`\`\``))
 
-                const awaitReactions = await msg.awaitReactions(filter, {
-                    max: 1,
-                    time: 20000
-                })
-
-                if (awaitReactions.first()?.emoji.name === '🗑️') msg.delete()
-            })
-        }).catch(err => message.channel.send(new MessageEmbed().setTitle('Eval').setColor(0xff0000).setDescription(`**📥 Input**\n\`\`\`js\n${args.join(' ')}\n\`\`\`\n**📤 Output**\n\`\`\`js\n${err}\n\`\`\``)).then(async msg => {
             await msg.react('🗑️')
 
-            const awaitReactions = await msg.awaitReactions(filter, {
+            const collector = await msg.createReactionCollector(filter, {
                 max: 1,
                 time: 20000
             })
 
-            if (awaitReactions.first()?.emoji.name === '🗑️') msg.delete()
-        }))
+            collector.on('end', () => msg.delete())
+        }).catch(async (err: Error) => {
+            const msg = await message.channel.send(embed.setColor(0xff0000).setDescription(`**📥 Input**\n\`\`\`js\n${input}\n\`\`\`\n**📤 Output**\n\`\`\`js\n${err}\n\`\`\``))
+
+            await msg.react('🗑️')
+
+            const collector = await msg.createReactionCollector(filter, {
+                max: 1,
+                time: 20000
+            })
+
+            collector.on('end', () => msg.delete())
+        })
     }
 }

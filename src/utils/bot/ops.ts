@@ -1,8 +1,9 @@
 import { GuildMember, Message } from 'discord.js'
+import { OpsType } from '../types'
 
-const ops = {
+const ops: OpsType = {
     ownerID: <string>process.env.OWNER_ID,
-    prefix: '디토 ',
+    prefix: '디라야 ',
     formatTime(date: Date = new Date()): string {
         return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초`
     },
