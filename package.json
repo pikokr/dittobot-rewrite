@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@types/markdown-it": "^10.0.2",
     "@types/node-fetch": "^2.5.7",
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "markdown-it": "^11.0.1",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {

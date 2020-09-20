@@ -1,5 +1,5 @@
-import { GuildMember, Message } from 'discord.js'
-import { OpsType } from '../types'
+import { GuildChannel, GuildMember, Message } from 'discord.js'
+import { OpsType } from '../../types'
 
 const ops: OpsType = {
     ownerID: <string>process.env.OWNER_ID,
@@ -15,6 +15,15 @@ const ops: OpsType = {
         if (!member) member = message.member
 
         return <GuildMember>member
+    },
+    getChannel(message: Message, msg: string): GuildChannel {
+        let channel: GuildChannel | null | undefined = message.guild?.channels.cache.get(msg)
+
+        if (!channel && msg) channel = message.guild?.channels.cache.find(ch => ch.name.includes(msg))
+        // @ts-ignore
+        if (!channel) channel = message.channel
+
+        return <GuildChannel>channel
     },
     uuidv4(): string {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {

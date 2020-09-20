@@ -3,7 +3,7 @@ import { readdirSync } from 'fs'
 import path from 'path'
 import ops from './ops'
 import pingpong from './pingpong'
-import { CommandType } from '../types'
+import { CommandType } from '../../types'
 import web from '../../web'
 
 export default class extends Client {
@@ -32,7 +32,7 @@ export default class extends Client {
                 this.user?.setActivity(activities[Math.floor(Math.random() * activities.length)])
             }, 10000)
 
-            web.start(5000)
+            web.start(this)
         })
 
         this.on('message', async (message: Message) => {
@@ -57,7 +57,7 @@ export default class extends Client {
 
     reloadCommands(): void {
         readdirSync(path.join(__dirname, '../../commands/')).forEach(dir => {
-            readdirSync(path.join(__dirname, `../../commands/${dir}`)).filter(f => f.endsWith('.ts')).forEach(file => {
+            readdirSync(path.join(__dirname, `../../commands/${dir}`)).forEach(file => {
                 const command: CommandType = require(path.join(__dirname, `../../commands/${dir}/${file}`)).default
 
                 if (command.name) this.commands.set(command.name, command)

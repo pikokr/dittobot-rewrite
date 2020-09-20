@@ -1,10 +1,11 @@
-import { Client, Message, MessageEmbed, MessageReaction, User } from 'discord.js'
+import { MessageEmbed, MessageReaction, User } from 'discord.js'
+import { CommandType } from '../../utils'
 
-export default {
+const Command: CommandType = {
     name: 'notice',
     aliases: ['공지', '공지사항', 'ㅜㅐ샻ㄷ', 'rhdwl', 'rhdwltkgkd'],
     category: 'owner',
-    async run(client: Client, message: Message, args: Array<string>): Promise<void> {
+    async run(client, message, args) {
         if (!args.join(' ')) return
 
         const msg = await message.channel.send(new MessageEmbed().setTitle(`${client.user?.username} 공지사항`).setDescription(`\`\`\`\n${args.join(' ')}\n\`\`\``).setColor(0x00ff00))
@@ -19,9 +20,9 @@ export default {
         })
 
         if (reactions.first()?.emoji.name === '⭕') {
-            // 샌즈
-        } else {
-            await msg.edit(new MessageEmbed().setTitle('공지사항 발신 취소').setColor(0x00ff00))
-        }
+            await msg.edit(new MessageEmbed().setTitle('공지사항 발신 완료').setColor(0x00ff00))
+        } else await msg.edit(new MessageEmbed().setTitle('공지사항 발신 취소').setColor(0x00ff00))
     }
 }
+
+export default Command

@@ -1,12 +1,12 @@
-import { Client, Message, MessageEmbed, MessageReaction, User } from 'discord.js'
+import { MessageEmbed, MessageReaction, User } from 'discord.js'
 import { inspect } from 'util'
-import { OpsType } from '../../utils'
+import { CommandType } from '../../utils'
 
-export default {
+const Command: CommandType = {
     name: 'eval',
     aliases: ['ㄷㅍ미'],
     category: 'owner',
-    run(client: Client, message: Message, args: Array<string>, { ownerID }: OpsType): void | Promise<Message> {
+    run(client, message, args, { ownerID }) {
         if (!args.join(' ')) return
 
         const input = args.join(' ').replace(/^```(js|javascript|jsx|ts|typescript)?\s/, '').replace(/\s?```$/, '')
@@ -49,3 +49,5 @@ export default {
         })
     }
 }
+
+export default Command
