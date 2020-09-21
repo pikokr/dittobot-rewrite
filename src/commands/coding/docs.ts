@@ -2,7 +2,7 @@ import { MessageEmbed } from 'discord.js'
 import { CommandType } from '../../utils'
 import fetch from 'node-fetch'
 
-const Command: CommandType = {
+const Docs: CommandType = {
     name: 'docs',
     aliases: ['문서', '앷ㄴ', 'anstj'],
     async run(_, message, args) {
@@ -18,4 +18,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Docs

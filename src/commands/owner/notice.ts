@@ -1,7 +1,7 @@
 import { MessageEmbed, MessageReaction, User } from 'discord.js'
 import { CommandType } from '../../utils'
 
-const Command: CommandType = {
+const Notice: CommandType = {
     name: 'notice',
     aliases: ['공지', '공지사항', 'ㅜㅐ샻ㄷ', 'rhdwl', 'rhdwltkgkd'],
     category: 'owner',
@@ -25,4 +25,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Notice

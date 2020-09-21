@@ -1,10 +1,10 @@
 import { MessageEmbed, TextChannel, VoiceChannel } from 'discord.js'
 import { CommandType } from '../../utils'
 
-const Command: CommandType = {
+const ChannelInfo: CommandType = {
     name: 'channelinfo',
     aliases: ['채널정보', '초무ㅜ디ㅑㅜ래', 'cosjfwjdqh'],
-    run: (_, message, args, { formatTime, getChannel }) => {
+    run(_, message, args, { formatTime, getChannel }) {
         const channel = getChannel(message, args.join(' '))
         const embed = new MessageEmbed()
             .setTitle(`${channel.name} 채널 정보`)
@@ -35,4 +35,4 @@ const types = {
     store: '상점 채널'
 }
 
-export default Command
+export default ChannelInfo

@@ -1,7 +1,7 @@
 import { CommandType } from '../../utils'
 import { STATUS_CODES } from 'http'
 
-const Command: CommandType = {
+const StatusCodes: CommandType = {
     name: 'status_codes',
     aliases: ['상태코드', 'tkdxozhem', 'ㄴㅅㅁ션_챙ㄷㄴ'],
     category: 'coding',
@@ -14,4 +14,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default StatusCodes

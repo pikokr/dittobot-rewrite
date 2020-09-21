@@ -1,7 +1,7 @@
 import { MessageEmbed } from 'discord.js'
 import { CommandType } from '../../types'
 
-const Command: CommandType = {
+const Unban: CommandType = {
     name: 'unban',
     aliases: ['언밴', 'djsqos', 'ㅕㅜㅠ무'],
     run: (client, message, args) => {
@@ -14,4 +14,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Unban

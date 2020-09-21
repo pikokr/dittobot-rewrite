@@ -1,7 +1,7 @@
 import { MessageEmbed } from 'discord.js'
 import { CommandType } from '../../utils'
 
-const Command: CommandType = {
+const Ping: CommandType = {
     name: 'ping',
     aliases: ['핑'],
     async run(client, message) {
@@ -10,4 +10,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Ping

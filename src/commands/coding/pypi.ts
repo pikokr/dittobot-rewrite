@@ -18,7 +18,7 @@ type resp = {
     releases: Array<releases>
 }
 
-const Command: CommandType = {
+const Pypi: CommandType = {
     name: 'pypi',
     async run(_, message, args) {
         if (!args.join(' ')) return
@@ -46,4 +46,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Pypi

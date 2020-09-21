@@ -1,7 +1,7 @@
 import { MessageEmbed } from 'discord.js'
 import { CommandType } from '../../utils'
 
-const Command: CommandType = {
+const Invite: CommandType = {
     name: 'invite',
     aliases: ['초대링크', '초대', '봇초대', 'ㅑㅜ퍗ㄷ', 'cheofldzm'],
     run(client, message) {
@@ -9,4 +9,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Invite

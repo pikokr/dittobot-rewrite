@@ -1,10 +1,10 @@
 import { CommandType } from '../../utils'
 import { MessageEmbed } from 'discord.js'
 
-const Command: CommandType = {
+const ServerInfo: CommandType = {
     name: 'serverinfo',
     aliases: ['서버정보', '정보서버', '서정', 'server-info', '섭정보', 'tjqwjdqh'],
-    run: (client, message, _, { formatTime }) => {
+    run(client, message, _, { formatTime }) {
         const embed = new MessageEmbed()
             .setTitle(`${message.guild?.name} 서버의 정보`)
             .setColor(0x00ff00)
@@ -13,8 +13,7 @@ const Command: CommandType = {
             .setTimestamp()
             .addFields([
                 { name: '👑 서버 주인', value: `${message.guild?.owner?.user.username}\n(ID: ${message.guild?.ownerID})` },
-                // @ts-ignore
-                { name: '🌎 서버 지역', value: region[message.guild?.region] },
+                { name: '🌎 서버 지역', value: /*region[message.guild?.region]*/message.guild?.region },
                 { name: '🆔 서버 ID', value: message.guild?.id },
                 { name: '🙎‍♂️ 서버 유저', value: `ALL: ${message.guild?.memberCount} (USER: ${message.guild?.members.cache.filter(m => !m.user.bot).size} | BOT: ${message.guild?.members.cache.filter(m => m.user.bot).size})` },
                 { name: '🎂 서버 생성 시간', value: formatTime(<Date>message.guild?.createdAt) },
@@ -22,19 +21,15 @@ const Command: CommandType = {
                 { name: '💤 비활성화 채널', value: message.guild?.afkChannel ? message.guild.afkChannel.name : '없음', inline: true }
             ])
 
-        // @ts-ignore
-        if (message.guild?.afkChannel) embed.addField('⏰ 비활성화 시간 제한', afkTimeout[message.guild?.afkTimeout], true)
+        if (message.guild?.afkChannel) embed.addField('⏰ 비활성화 시간 제한', /*afkTimeout[message.guild?.afkTimeout]*/message.guild.afkTimeout, true)
 
         embed.addFields([
-            // @ts-ignore
-            { name: '🔐 서버 보안', value: verificationLevel[message.guild?.verificationLevel] },
+            { name: '🔐 서버 보안', value: /*verificationLevel[message.guild?.verificationLevel]*/message.guild?.verificationLevel },
             { name: '📱 2단계 인증', value: mfaLevel[(<number>message.guild?.mfaLevel)] },
             { name: '📡 시스템 메세지 채널', value: message.guild?.systemChannel || '없음', inline: true },
             { name: '규칙 채널', value: message.guild?.rulesChannel || '없음', inline: true },
-            // @ts-ignore
-            { name: '📺 유해 미디어 콘텐츠 필터', value: explicitContentFilter[message.guild?.explicitContentFilter] },
-            // @ts-ignore
-            { name: '🔔 알림 설정 초기화', value: defaultMessageNotifications[message.guild?.defaultMessageNotifications] },
+            { name: '📺 유해 미디어 콘텐츠 필터', value: /*explicitContentFilter[message.guild?.explicitContentFilter]*/message.guild?.explicitContentFilter },
+            { name: '🔔 알림 설정 초기화', value: /*defaultMessageNotifications[message.guild?.defaultMessageNotifications]*/message.guild?.defaultMessageNotifications },
             { name: '🎙 음성 채널에 접속한 수', value: `${message.guild?.voiceStates.cache.size}명` },
             { name: `${client.emojis.cache.get('686131200242352184')} 서버 부스트 레벨`, value: `${message.guild?.premiumTier}레벨`, inline: true },
             { name: `${client.emojis.cache.get('686131200242352184')} 서버 부스트 횟수`, value: `${message.guild?.premiumSubscriptionCount}회`, inline: true }
@@ -53,7 +48,7 @@ const Command: CommandType = {
 
 const mfaLevel = ['없음', '활성화']
 
-const explicitContentFilter = {
+/*const explicitContentFilter = {
     DISABLED: '미디어 콘텐츠를 스캔하지 않음',
     MEMBERS_WITHOUT_ROLES: '역할 없는 멤버의 미디어 콘텐츠를 스캔',
     ALL_MEMBERS: '모든 멤버의 미디어 콘텐츠를 스캔'
@@ -95,6 +90,6 @@ const verificationLevel = {
     MEDIUM: 'Discord에 가입한 지 5분',
     HIGH: '이 서버에 멤버가 된 지 10분',
     VERY_HIGH: '휴대폰 인증이 완료된 Discord 계정'
-}
+}*/
 
-export default Command
+export default ServerInfo

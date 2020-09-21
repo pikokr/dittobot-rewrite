@@ -1,10 +1,10 @@
 import { CommandType } from '../../utils'
 import { ClientPresenceStatusData, MessageEmbed } from 'discord.js'
 
-const Command: CommandType = {
+const UserInfo: CommandType = {
     name: 'userinfo',
     aliases: ['정보', '내정보', 'user-info', 'user-information', 'user', 'info-user', 'user_info', '유저정보'],
-    run: (client, message, args, { getMember, formatTime }) => {
+    run(client, message, args, { getMember, formatTime }) {
         const member = getMember(message, args.join(' '))
 
         const embed = new MessageEmbed()
@@ -47,10 +47,10 @@ const status = {
     invisible: '🔳 오프라인 표시'
 }
 
-const clientStatus = {
+/*const clientStatus = {
     desktop: '🖥 디스코드 앱',
     web: '⌨ 웹',
     mobile: '📱 모바일'
-}
+}*/
 
-export default Command
+export default UserInfo

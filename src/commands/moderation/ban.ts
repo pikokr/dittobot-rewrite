@@ -1,7 +1,7 @@
 import { MessageEmbed, MessageReaction, User } from 'discord.js'
 import { CommandType } from '../../utils'
 
-const Command: CommandType = {
+const Ban: CommandType = {
     name: 'ban',
     aliases: ['차단', '밴', 'qos', 'ckeks', 'ㅠ무'],
     async run(client, message, args) {
@@ -49,4 +49,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Ban

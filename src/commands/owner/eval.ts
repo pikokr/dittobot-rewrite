@@ -2,7 +2,7 @@ import { MessageEmbed, MessageReaction, User } from 'discord.js'
 import { inspect } from 'util'
 import { CommandType } from '../../utils'
 
-const Command: CommandType = {
+const Eval: CommandType = {
     name: 'eval',
     aliases: ['ㄷㅍ미'],
     category: 'owner',
@@ -50,4 +50,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Eval

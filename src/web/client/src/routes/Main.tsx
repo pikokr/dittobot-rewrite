@@ -1,10 +1,16 @@
 import React from 'react'
+import fetch from 'node-fetch'
 
 class Main extends React.Component {
+    async componentDidMount() {
+        const sans = await (await fetch('http://localhost:5000/api')).json()
+        console.log(sans)
+    }
+
     render() {
         return (
             <>
-                <h1>곧 만들어질 예정입니다</h1>
+                <h1>ㅁㄴㅇㄹ</h1>
             </>
         )
     }

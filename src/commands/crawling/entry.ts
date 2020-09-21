@@ -28,9 +28,9 @@ type Discuss = {
     count: number
 }
 
-const Command: CommandType = {
+const Entry: CommandType = {
     name: 'entry',
-    aliases: ['엔트리', '엔1트리', 'dpsxmfl', '둣교', '엔틜', 'dpsxmlf', '망트리', 'akdxmfl'],
+    aliases: ['엔트리', '엔1트리', 'dpsxmfl', '둣교', '둣1교', '엔틜', '엔1틜', '엔튈', '엔1튈', 'dpsxmlf', '망트리', 'akdxmfl'],
     async run(_, message, args) {
         if (!args.join(' ')) return message.channel.send('검색할 엔1트리 유저 닉네임을 입력해 주세요!')
 
@@ -86,4 +86,4 @@ const roles = {
     admin: '관리자 계정'
 }
 
-export default Command
+export default Entry

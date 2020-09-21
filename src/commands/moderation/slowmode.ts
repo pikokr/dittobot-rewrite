@@ -1,7 +1,7 @@
 import { TextChannel } from 'discord.js'
 import { CommandType } from '../../types'
 
-const Command: CommandType = {
+const Slowmode: CommandType = {
     name: 'slowmode',
     aliases: ['슬로우모드', '니ㅐ즈ㅐㅇㄷ', 'tmffhdnahem'],
     run: (client, message, args) => {
@@ -18,4 +18,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Slowmode

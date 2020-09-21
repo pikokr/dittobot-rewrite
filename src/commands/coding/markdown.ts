@@ -2,7 +2,7 @@ import { MessageEmbed } from 'discord.js'
 import MarkdownIt from 'markdown-it'
 import { CommandType } from '../../utils'
 
-const Command: CommandType = {
+const Markdown: CommandType = {
     name: 'markdown',
     run(_, message, args) {
         if (!args.join(' ')) return
@@ -15,4 +15,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Markdown

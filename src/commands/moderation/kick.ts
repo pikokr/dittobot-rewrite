@@ -1,7 +1,7 @@
 import { MessageEmbed, MessageReaction, User } from 'discord.js'
 import { CommandType } from '../../utils'
 
-const Command: CommandType = {
+const Kick: CommandType = {
     name: 'kick',
     aliases: ['추방', 'cnqkd', '킥', 'ㅏㅑ차'],
     async run(client, message, args) {
@@ -49,4 +49,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Kick

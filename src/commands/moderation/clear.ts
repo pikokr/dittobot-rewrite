@@ -1,7 +1,7 @@
 import { Collection, Message, Snowflake, TextChannel } from 'discord.js'
 import { CommandType } from '../../types'
 
-const Command: CommandType = {
+const Clear: CommandType = {
     name: 'clear',
     aliases: ['삭제', '청소', 'delete', '칟ㅁㄱ', 'ㅇ딛ㅅㄷ', 'tkrwp', 'cjdth', '지워', 'wldnj', 'clean', '칟무', '클린'],
     run(client, message, args) {
@@ -16,4 +16,4 @@ const Command: CommandType = {
     }
 }
 
-export default Command
+export default Clear
