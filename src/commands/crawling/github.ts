@@ -34,13 +34,13 @@ const Github: CommandType = {
             { name: '상태 메세지', value: bio || '없음' },
             { name: '지역', value: location || '없음' },
             { name: '계정', value: accountTypes[type], inline: true },
-            { name: '레포지토리', value: public_repos ? `${public_repos}개` : '없음', inline: true },
+            { name: '리포지토리', value: public_repos ? `${public_repos}개` : '없음', inline: true },
             { name: 'Gist', value: public_gists ? `${public_gists}개` : '없음', inline: true },
             { name: '블로그', value: blog || '없음', inline: true },
             { name: '이메일', value: email || '없음', inline: true },
             { name: '팔로워', value: followers ? `${followers}명` : '없음', inline: true },
             { name: '팔로잉', value: following ? `${following}명` : '없음', inline: true },
-            { name: '가입 날짜', value: formatTime(created_at), inline: true }
+            { name: '가입 시간', value: formatTime(created_at), inline: true }
         ]))
     }
 }

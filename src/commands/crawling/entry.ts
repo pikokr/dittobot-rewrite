@@ -30,7 +30,7 @@ type Discuss = {
 
 const Entry: CommandType = {
     name: 'entry',
-    aliases: ['엔트리', '엔1트리', 'dpsxmfl', '둣교', '둣1교', '엔틜', '엔1틜', '엔튈', '엔1튈', 'dpsxmlf', '망트리', 'akdxmfl'],
+    aliases: ['엔트리', '엔1트리', 'dpsxmfl', '둣교', '둣1교', '엔틜', '엔1틜', '엔튈', '엔1튈', 'dpsxmlf', '망트리', 'akdxmfl', 'en+ry', 'en1try', 'e1ntry', '엔1틀', '엔틀', '망1트리'],
     async run(_, message, args) {
         if (!args.join(' ')) return message.channel.send('검색할 엔1트리 유저 닉네임을 입력해 주세요!')
 

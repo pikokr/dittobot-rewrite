@@ -4,7 +4,8 @@ import { OpsType } from '../../types'
 const ops: OpsType = {
     ownerID: <string>process.env.OWNER_ID,
     prefix: '디라야 ',
-    formatTime(date: Date = new Date()): string {
+    formatTime(_date: Date = new Date()): string {
+        const date = new Date(_date)
         return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초`
     },
     getMember(message: Message, msg: string): GuildMember {
@@ -20,8 +21,7 @@ const ops: OpsType = {
         let channel: GuildChannel | null | undefined = message.guild?.channels.cache.get(msg)
 
         if (!channel && msg) channel = message.guild?.channels.cache.find(ch => ch.name.includes(msg))
-        // @ts-ignore
-        if (!channel) channel = message.channel
+        if (!channel) channel = <GuildChannel>message.channel
 
         return <GuildChannel>channel
     },

@@ -22,7 +22,7 @@ type res = {
 
 const Repository: CommandType = {
     name: 'repository',
-    aliases: ['레포지토리', '레포', 'repo', 'ㄱ데ㅐ', 'fpvh', 'fpvhwlxhfl', 'ㄱ데ㅐ냐새교'],
+    aliases: ['리포지토리', '레포지토리', '레포', 'repo', 'ㄱ데ㅐ', 'fpvh', 'fpvhwlxhfl', 'ㄱ데ㅐ냐새교'],
     async run(_, message, args, { formatTime }) {
         if (!args[0]) return message.channel.send('유저 이름을 입력해 주세요')
         if (!args[1]) return message.channel.send('레포지토리 이름을 입력해 주세요')

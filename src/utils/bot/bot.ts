@@ -40,15 +40,15 @@ export default class extends Client {
             if (!message.content.startsWith(ops.prefix)) return
 
             const args: Array<string> = message.content.slice(ops.prefix.length).trim().split(/ +/g),
-                cmd = <string>args.shift()?.toLowerCase(),
+                cmd = <string>args[0].toLowerCase(),
                 command = <CommandType>this.commands.get(this.aliases.get(cmd) || cmd)
 
             if (command) {
                 if (command.category === 'owner' && message.author.id !== ops.ownerID) return message.channel.send(`\`${this.user?.username} 개발자\`만 가능합니다.`)
 
-                command.run(this, message, args, ops)
+                command.run(this, message, args.slice(1), ops)
             } else {
-                const text = await pingpong(message.author.id, cmd)
+                const text = await pingpong(message.author.id, args.join(' '))
 
                 message.channel.send(text)
             }
