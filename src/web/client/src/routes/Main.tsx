@@ -1,8 +1,31 @@
 import React from 'react'
 import fetch from 'node-fetch'
-import styled from 'styled-components'
-import './Main.css'
+import styled, { createGlobalStyle } from 'styled-components'
 import { Link } from 'react-router-dom'
+
+const Global = createGlobalStyle`
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-primary);
+        color: var(--text-normal);
+        font-family: Whitney, "Apple SD Gothic Neo", NanumBarunGothic, "맑은 고딕", "Malgun Gothic", Gulim, 굴림, Dotum, 돋움, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --text-normal: #2e3338;
+            --background-primary: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --text-normal: #dcddde;
+            --background-primary: #36393f;
+        }
+    }
+`
 
 const Container = styled.div`
     display: flex;
@@ -10,7 +33,6 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     height: 100vh;
-    color: white;
 `
 
 const Img = styled.img`
@@ -64,11 +86,14 @@ class Main extends React.Component {
     async componentDidMount() {
         const user = await fetch('http://test.ditto7890.xyz:5000/api/user').then(res => res.json()).catch(() => this.setState({ catch: true }))
         this.setState({ user })
+
+        if (this.state.user?.username) document.title = this.state.user?.username
     }
 
     render() {
         return (
             <Container onDragStart={event => event.preventDefault()}>
+                <Global />
                 {this.state.user ? (
                     <>
                         <h1>{this.state.user.username}</h1>
