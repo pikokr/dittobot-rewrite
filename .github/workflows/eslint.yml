@@ -10,8 +10,8 @@ jobs:
     steps:
       - run: npm install
       - uses: actions/checkout@v2
-      - run: npm install eslint
-      - uses: hallee/eslint-action@1.0.3
+      - run: npm install eslint eslint-config-react-app @typescript-eslint/eslint-plugin@2.x @typescript-eslint/parser@2.x babel-eslint@10.x eslint@6.x eslint-plugin-flowtype@4.x eslint-plugin-import@2.x eslint-plugin-jsx-a11y@6.x eslint-plugin-react@7.x eslint-plugin-react-hooks@2.x
+      - uses: hallee/eslint-action@1.0.3 
         if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
         with:
           repo-token: ${{secrets.GITHUB_TOKEN}}
