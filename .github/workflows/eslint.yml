@@ -8,9 +8,8 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - run: npm install
       - uses: actions/checkout@v2
-      - run: npm install eslint eslint-config-react-app @typescript-eslint/eslint-plugin @typescript-eslint/parser babel-eslint eslint-plugin-flowtype eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks@
+      - run: npm install
       - uses: hallee/eslint-action@1.0.3 
         if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
         with:
