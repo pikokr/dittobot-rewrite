@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm config set -g production false
+      - run: npm config set production false
       - run: npm install
       - uses: hallee/eslint-action@1.0.3 
         with:
